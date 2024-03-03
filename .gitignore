@@ -25,6 +25,8 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+.idea/*
+.idea
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -165,3 +167,5 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 /credentials.json
+/.idea/.gitignore
+/.idea/misc.xml
