@@ -4,16 +4,13 @@ import sqlite3
 import hashlib
 import os
 
-
 # Hash a password for storing
 def hash_password(password):
     return hashlib.sha256(password.encode()).hexdigest()
 
-
 # Verify a stored password against one provided by user
 def verify_password(stored_password, provided_password):
     return stored_password == hash_password(provided_password)
-
 
 # Load user credentials from file
 def load_credentials():
@@ -25,12 +22,10 @@ def load_credentials():
                 credentials[username] = hashed_password
     return credentials
 
-
 # Save new user credentials to file
 def save_credentials(username, password):
     with open("users.txt", "a") as file:
         file.write(f"{username}:{hash_password(password)}\n")
-
 
 # Login window
 def login_window():
@@ -63,7 +58,6 @@ def login_window():
     tk.Button(login_win, text="Sign Up", command=open_signup_window).pack()
 
     login_win.mainloop()
-
 
 # Sign-up window
 def signup_window():
@@ -104,12 +98,10 @@ def signup_window():
 
     signup_win.mainloop()
 
-
 # Function called after successful login
 def login_success():
     messagebox.showinfo("Login Successful", "Welcome!")
     main_window()
-
 
 # Main window after login
 def main_window():
@@ -148,7 +140,6 @@ def main_window():
     tk.Button(main_win, text="Insert Data", command=insert_data).pack()
 
     main_win.mainloop()
-
 
 # Start with login window
 login_window()
