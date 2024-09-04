@@ -108,6 +108,7 @@ def main_window():
     def browse_db():
         db_path = filedialog.askopenfilename(title="Select Database File",
                                              filetypes=(("SQLite files", "*.sqlite;*.db"), ("All files", "*.*")))
+        print(db_path)
         if db_path:
             db_label.config(text=db_path)
             global conn
