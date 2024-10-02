@@ -1,0 +1,416 @@
+# Summary
+
+ - Global packages - C: python - py 3.12
+ - User packages - appdata/roaming - just pip - py 3.9
+ - venv packages - venv - py 3.9
+ - local packages - appdata/local/programs - py 3.9
+
+ # in jupyter
+ - outside venv - ipykernel
+ 'C:\\Python312\\python.exe'
+ ['C:\\Python312\\Lib\\site-packages\\pandas']
+ C:\\ packages
+ - outside venv - venvstats
+ 'C:\\Users\\THW\\Desktop\\pycproj\\STATS\\venv\\Scripts\\python.exe'
+ ['C:\\Users\\THW\\Desktop\\pycproj\\STATS\\venv\\lib\\site-packages\\pandas']
+ venv packages
+ - inside venv - same behaviour
+
+
+# PowerShell (admin)
+Set-ExecutionPolicy RemoteSigned
+# PowerShell
+
+# jupyter kernelspec list
+PS C:\Users\THW\Desktop\pycproj\STATS> jupyter kernelspec list
+Available kernels:
+  venvstats    C:\Users\THW\AppData\Roaming\jupyter\kernels\venvstats
+  python3      C:\Python312\share\jupyter\kernels\python3
+
+PS C:\Users\THW\Desktop\pycproj\STATS\venv\Scripts> activate
+(venv) PS C:\Users\THW\Desktop\pycproj\STATS\venv\Scripts> jupyter kernelspec list
+Available kernels:
+  python3      C:\Users\THW\Desktop\pycproj\STATS\venv\share\jupyter\kernels\python3
+  venvstats    C:\Users\THW\AppData\Roaming\jupyter\kernels\venvstats
+(venv) PS C:\Users\THW\Desktop\pycproj\STATS\venv\Scripts> deactivate
+
+C:\Users\THW\AppData\Roaming\jupyter\kernels\venvstats
+{
+ "argv": [
+  "C:\\Users\\THW\\Desktop\\pycproj\\STATS\\venv\\Scripts\\python.exe",
+  "-m",
+  "ipykernel_launcher",
+  "-f",
+  "{connection_file}"
+ ],
+ "display_name": "venvstats",
+ "language": "python",
+ "metadata": {
+  "debugger": true
+ }
+}
+
+# there is also a kernel like this in app data/local
+C:\Users\THW\Desktop\pycproj\STATS\venv\share\jupyter\kernels\python3
+C:\Python312\share\jupyter\kernels\python3
+{
+ "argv": [
+  "python",
+  "-m",
+  "ipykernel_launcher",
+  "-f",
+  "{connection_file}"
+ ],
+ "display_name": "Python 3 (ipykernel)",
+ "language": "python",
+ "metadata": {
+  "debugger": true
+ }
+}
+
+# Installed packages paths
+
+# Global site-packages: Packages for all users, requires admin rights,
+# and is the default installation location unless the --user flag is used.
+
+# Per-user site-packages: User-specific packages, does not require admin rights,
+# and is checked before global site-packages when importing.
+
+# Global site packages (outside venv)
+
+PS C:\Users\THW\Desktop\pycproj\STATS\venv\Scripts> python -m site
+sys.path = [
+    'C:\\Users\\THW\\Desktop\\pycproj\\STATS\\venv\\Scripts',               # depend on where is run from
+    'C:\\Python312\\python312.zip',                                         # why?
+    'C:\\Python312\\DLLs',                                                  # no packages here
+    'C:\\Python312\\Lib',                                                   # may contain packages
+    'C:\\Python312',                                                        # main folder but no packages
+    'C:\\Users\\THW\\AppData\\Roaming\\Python\\Python312\\site-packages',   # user packages, just pip
+    'C:\\Python312\\Lib\\site-packages',                                    ### this is the location of the packages
+    'C:\\Python312\\Lib\\site-packages\\win32',                             # some .pyd files
+    'C:\\Python312\\Lib\\site-packages\\win32\\lib',                        # some .py files
+    'C:\\Python312\\Lib\\site-packages\\Pythonwin',                         # no packages here
+]
+USER_BASE: 'C:\\Users\\THW\\AppData\\Roaming\\Python' (exists)
+USER_SITE: 'C:\\Users\\THW\\AppData\\Roaming\\Python\\Python312\\site-packages' (exists)
+ENABLE_USER_SITE: True
+
+# pip list is not recognised, but pip3 list is
+
+# PS C:\Users\THW\Desktop\pycproj\STATS\venv\Scripts> python -m pip list    # does the same thing as pip3
+
+PS C:\Users\THW\Desktop\pycproj\STATS\venv\Scripts> pip3 list
+Package                   Version
+------------------------- ---------------
+anyio                     4.3.0
+argon2-cffi               23.1.0
+argon2-cffi-bindings      21.2.0
+arrow                     1.3.0
+asttokens                 2.4.1
+async-lru                 2.0.4
+attrs                     23.2.0
+Babel                     2.14.0
+beautifulsoup4            4.12.3
+bleach                    6.1.0
+certifi                   2024.2.2
+cffi                      1.16.0
+charset-normalizer        3.3.2
+colorama                  0.4.6
+comm                      0.2.1
+contourpy                 1.2.0
+cycler                    0.12.1
+debugpy                   1.8.1
+decorator                 5.1.1
+defusedxml                0.7.1
+executing                 2.0.1
+fastjsonschema            2.19.1
+fonttools                 4.49.0
+fqdn                      1.5.1
+h11                       0.14.0
+httpcore                  1.0.4
+httpx                     0.27.0
+idna                      3.6
+ipykernel                 6.29.3
+ipython                   8.22.1
+ipywidgets                8.1.2
+isoduration               20.11.0
+jedi                      0.19.1
+Jinja2                    3.1.3
+json5                     0.9.18
+jsonpointer               2.4
+jsonschema                4.21.1
+jsonschema-specifications 2023.12.1
+jupyter                   1.0.0
+jupyter_client            8.6.0
+jupyter-console           6.6.3
+jupyter_core              5.7.1
+jupyter-events            0.9.0
+jupyter-lsp               2.2.3
+jupyter_server            2.12.5
+jupyter_server_terminals  0.5.2
+jupyterlab                4.1.2
+jupyterlab_pygments       0.3.0
+jupyterlab_server         2.25.3
+jupyterlab_widgets        3.0.10
+kiwisolver                1.4.5
+MarkupSafe                2.1.5
+matplotlib                3.8.3
+matplotlib-inline         0.1.6
+mistune                   3.0.2
+nbclient                  0.9.0
+nbconvert                 7.16.1
+nbformat                  5.9.2
+nest-asyncio              1.6.0
+notebook                  7.1.1
+notebook_shim             0.2.4
+numpy                     1.26.4
+overrides                 7.7.0
+packaging                 23.2
+pandas                    2.2.1
+pandocfilters             1.5.1
+parso                     0.8.3
+pillow                    10.2.0
+pip                       24.0
+platformdirs              4.2.0
+prometheus_client         0.20.0
+prompt-toolkit            3.0.43
+psutil                    5.9.8
+pure-eval                 0.2.2
+pycparser                 2.21
+Pygments                  2.17.2
+pyparsing                 3.1.2
+python-dateutil           2.9.0.post0
+python-json-logger        2.0.7
+pytz                      2024.1
+pywin32                   306
+pywinpty                  2.0.13
+PyYAML                    6.0.1
+pyzmq                     25.1.2
+qtconsole                 5.5.1
+QtPy                      2.4.1
+referencing               0.33.0
+requests                  2.31.0
+rfc3339-validator         0.1.4
+rfc3986-validator         0.1.1
+rpds-py                   0.18.0
+seaborn                   0.13.2
+Send2Trash                1.8.2
+six                       1.16.0
+sniffio                   1.3.1
+soupsieve                 2.5
+stack-data                0.6.3
+terminado                 0.18.0
+tinycss2                  1.2.1
+tornado                   6.4
+traitlets                 5.14.1
+types-python-dateutil     2.8.19.20240106
+tzdata                    2024.1
+uri-template              1.3.0
+urllib3                   2.2.1
+wcwidth                   0.2.13
+webcolors                 1.13
+webencodings              0.5.1
+websocket-client          1.7.0
+widgetsnbextension        4.0.10
+
+
+
+# User packages (outside venv)
+PS C:\Users\THW\Desktop\pycproj\STATS\venv\Scripts>  python -m site --user-site
+C:\Users\THW\AppData\Roaming\Python\Python312\site-packages
+
+PS C:\Users\THW\Desktop\pycproj\STATS\venv\Scripts> pip3 list --user
+Package Version
+------- -------
+pip     24.0
+
+PS C:\Users\THW\Desktop\pycproj\STATS\venv\Scripts> python -m pip list --user
+Package Version
+------- -------
+pip     24.0
+
+# In python from cli, does not matter if admin or not
+>>> import sys
+>>> sys.executable
+'C:\\Python312\\python.exe'
+
+>>> import pandas as pd
+>>> pd.__path__
+['C:\\Python312\\Lib\\site-packages\\pandas']
+
+
+
+# Venv packages
+# site packages located in venv
+# also pointing to python 3.9 (instead of 3.12) in app data local for some reason
+# app data local also python 3.9
+
+(venv) PS C:\Users\THW\Desktop\pycproj\STATS\venv\Scripts> python -m site
+sys.path = [
+    'C:\\Users\\THW\\Desktop\\pycproj\\STATS\\venv\\Scripts',
+    'C:\\Users\\THW\\AppData\\Local\\Programs\\Python\\Python39\\python39.zip',
+    'C:\\Users\\THW\\AppData\\Local\\Programs\\Python\\Python39\\DLLs',
+    'C:\\Users\\THW\\AppData\\Local\\Programs\\Python\\Python39\\lib',
+    'C:\\Users\\THW\\AppData\\Local\\Programs\\Python\\Python39',
+    'C:\\Users\\THW\\Desktop\\pycproj\\STATS\\venv',
+    'C:\\Users\\THW\\Desktop\\pycproj\\STATS\\venv\\lib\\site-packages',
+    'C:\\Users\\THW\\Desktop\\pycproj\\STATS\\venv\\lib\\site-packages\\win32',
+    'C:\\Users\\THW\\Desktop\\pycproj\\STATS\\venv\\lib\\site-packages\\win32\\lib',
+    'C:\\Users\\THW\\Desktop\\pycproj\\STATS\\venv\\lib\\site-packages\\Pythonwin',
+]
+USER_BASE: 'C:\\Users\\THW\\AppData\\Roaming\\Python' (exists)
+USER_SITE: 'C:\\Users\\THW\\AppData\\Roaming\\Python\\Python39\\site-packages' (doesn't exist)
+ENABLE_USER_SITE: False
+
+# (venv) PS C:\Users\THW\Desktop\pycproj\STATS\venv\Scripts> pip3 list     # same list
+
+(venv) PS C:\Users\THW\Desktop\pycproj\STATS\venv\Scripts> pip list
+Package                   Version
+------------------------- -----------
+altgraph                  0.17.4
+asttokens                 2.4.1
+attrs                     23.2.0
+auto-py-to-exe            2.44.0
+Babel                     2.15.0
+beautifulsoup4            4.12.3
+bleach                    6.1.0
+bottle                    0.12.25
+bottle-websocket          0.2.9
+certifi                   2024.6.2
+cffi                      1.16.0
+chardet                   5.2.0
+charset-normalizer        3.3.2
+colorama                  0.4.6
+comm                      0.2.1
+contourpy                 1.2.0
+cycler                    0.12.1
+debugpy                   1.8.1
+decorator                 5.1.1
+defusedxml                0.7.1
+docx                      0.2.4
+Eel                       0.16.0
+et-xmlfile                1.1.0
+exceptiongroup            1.2.0
+executing                 2.0.1
+fastjsonschema            2.19.1
+fonttools                 4.49.0
+future                    1.0.0
+gevent                    24.2.1
+gevent-websocket          0.10.1
+greenlet                  3.0.3
+idna                      3.7
+importlib_metadata        7.0.2
+importlib_resources       6.1.3
+ipykernel                 6.29.3
+ipympl                    0.9.4
+ipython                   8.18.1
+ipython-genutils          0.2.0
+ipywidgets                8.1.5
+jedi                      0.19.1
+Jinja2                    3.1.3
+jsonschema                4.21.1
+jsonschema-specifications 2023.12.1
+jupyter_client            8.6.0
+jupyter_core              5.7.1
+jupyterlab_pygments       0.3.0
+jupyterlab_widgets        3.0.13
+kiwisolver                1.4.5
+lxml                      5.2.2
+MarkupSafe                2.1.5
+matplotlib                3.8.3
+matplotlib-inline         0.1.6
+mistune                   3.0.2
+mpmath                    1.3.0
+nbclient                  0.10.0
+nbconvert                 7.16.3
+nbformat                  5.10.3
+nest-asyncio              1.6.0
+numpy                     1.26.4
+openpyxl                  3.1.4
+packaging                 23.2
+pandas                    2.2.1
+pandocfilters             1.5.1
+parso                     0.8.3
+patsy                     0.5.6
+pefile                    2023.2.7
+pillow                    10.2.0
+pip                       24.1
+platformdirs              4.2.0
+prompt-toolkit            3.0.43
+psutil                    5.9.8
+pure-eval                 0.2.2
+pycparser                 2.22
+Pygments                  2.17.2
+pyinstaller               6.8.0
+pyinstaller-hooks-contrib 2024.7
+pyoxidizer                0.24.0
+pyparsing                 3.1.2
+PyQt5                     5.15.10
+PyQt5-Qt5                 5.15.2
+PyQt5-sip                 12.13.0
+python-dateutil           2.9.0.post0
+python-docx               1.1.2
+pytz                      2024.1
+pywin32                   306
+pywin32-ctypes            0.2.2
+pyzmq                     25.1.2
+referencing               0.34.0
+reportlab                 4.2.2
+requests                  2.32.3
+rpds-py                   0.18.0
+scipy                     1.12.0
+seaborn                   0.13.2
+setuptools                60.2.0
+six                       1.16.0
+soupsieve                 2.5
+stack-data                0.6.3
+statsmodels               0.14.1
+sympy                     1.12
+tinycss2                  1.2.1
+tkcalendar                1.6.1
+tornado                   6.4
+traitlets                 5.14.1
+typing_extensions         4.10.0
+tzdata                    2024.1
+urllib3                   2.2.2
+wcwidth                   0.2.13
+webencodings              0.5.1
+wheel                     0.37.1
+whichcraft                0.6.1
+widgetsnbextension        4.0.13
+zipp                      3.17.0
+zope.event                5.0
+zope.interface            6.4.post2
+
+# User venv packages
+# Same location but python 3.9 instead of 3.12
+
+(venv) PS C:\Users\THW\Desktop\pycproj\STATS\venv\Scripts> python -m site --user-site
+C:\Users\THW\AppData\Roaming\Python\Python39\site-packages
+
+# These two commands generate no output
+(venv) PS C:\Users\THW\Desktop\pycproj\STATS\venv\Scripts> pip3 list --user
+(venv) PS C:\Users\THW\Desktop\pycproj\STATS\venv\Scripts> pip list --user
+
+# Python in venv
+
+>>> import sys
+>>> sys.executable
+'C:\\Users\\THW\\Desktop\\pycproj\\STATS\\venv\\Scripts\\python.exe'
+
+>>> import pandas as pd
+>>> pd.__path__
+['C:\\Users\\THW\\Desktop\\pycproj\\STATS\\venv\\lib\\site-packages\\pandas']
+
+# Running a script:
+
+import sys
+import pandas as pd
+
+print('executable:', sys.executable)
+print('pandas path:', pd.__path__)
+
+# result
+
+executable: C:\Users\THW\Desktop\pycproj\STATS\venv\Scripts\python.exe
+pandas path: ['C:\\Users\\THW\\Desktop\\pycproj\\STATS\\venv\\lib\\site-packages\\pandas']
