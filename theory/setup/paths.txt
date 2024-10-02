@@ -1,4 +1,4 @@
-# Summary
+# Summary 
 
  - Global packages - C: python - py 3.12
  - User packages - appdata/roaming - just pip - py 3.9
